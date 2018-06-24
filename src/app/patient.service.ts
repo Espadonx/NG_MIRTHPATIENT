@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class PatientService {
 
+  public url_ws = "http://localhost:39764/ProjetInteropIsis/webresources/";
+
   public httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -21,7 +23,15 @@ export class PatientService {
    * Fonction qui récupère la liste des patients contenus dans la DB
    */
   getPatientList(): Observable<Patient[]>{
-    return this.http.get<Patient[]>("http://localhost:39764/ProjetInteropIsis/webresources/ws_admissions.patients/", this.httpOptions);
+    return this.http.get<Patient[]>(this.url_ws+"ws_admissions.patients/", this.httpOptions);
+  }
+
+  /**
+   * Récupère les information d'un patient en particulier
+   * @param id 
+   */
+  getPatientInformation(id): Observable<Patient>{
+    return this.http.get<Patient>(this.url_ws+"ws_admissions.patients/"+id, this.httpOptions);
   }
 
 }

@@ -11,14 +11,16 @@
   <button (click)='getBackToList()' class='btn btn-info' style='float:right;'>Retourner à la liste</button>
 </h3>
 
-<form>
+<form #patientForm="ngForm">
 
+  {{patient | json}}
+  
   <div class='row'>
     <div class='col'>
       <!-- NOM -->
       <div class="form-group">
         <label for="nom">Nom</label>
-        <input type="text" name='nom' class="form-control" placeholder="nom du patient">
+        <input type="text" name='nom' class="form-control" placeholder="nom du patient" [(ngModel)]="patient.p_nom">
       </div>
       <!-- /NOM -->
     </div>
@@ -26,7 +28,7 @@
       <!-- NOM MATRI -->
       <div class="form-group">
         <label for="nommatry">Nom matrynomial</label>
-        <input type="text" class="form-control" name="nommatry" placeholder="nom matrynomial">
+        <input type="text" class="form-control" name="nommatry" placeholder="nom matrynomial" [(ngModel)]="patient.p_nommatri">
       </div>
       <!-- /NOM MATRI -->
     </div>
@@ -36,19 +38,19 @@
       <!-- PRENOM 1 -->
       <div class="form-group">
         <label for="prenom1">Prénom n°1</label>
-        <input type="text" name="prenom1" class="form-control" placeholder="">
+        <input type="text" name="prenom1" class="form-control" placeholder="" [(ngModel)]="patient.p_prenoms.prenom1">
       </div>
       <!-- /PRENOM -->
       <!-- PRENOM 2 -->
       <div class="form-group">
         <label for="prenom2">Prénom n°2</label>
-        <input type="text" name="prenom2" class="form-control" placeholder="">
+        <input type="text" name="prenom2" class="form-control" placeholder="" [(ngModel)]="patient.p_prenoms.prenom2">
       </div>
       <!-- /PRENOM -->
       <!-- PRENOM 3 -->
       <div class="form-group">
         <label for="prenom3">Prénom n°3</label>
-        <input type="text" name="prenom3" class="form-control" placeholder="">
+        <input type="text" name="prenom3" class="form-control" placeholder="" [(ngModel)]="patient.p_prenoms.prenom3">
       </div>
       <!-- /PRENOM -->
     </div>
@@ -56,37 +58,37 @@
       <!-- numcpam -->
       <div class="form-group">
         <label for="numcpam">Numéro CPAM</label>
-        <input type="number" name="numcpam" class="form-control" placeholder="">
+        <input type="number" name="numcpam" class="form-control" placeholder="" [(ngModel)]="patient.p_numcpam">
       </div>
       <!-- /numcpam -->
       <!-- datenaissance -->
       <div class="form-group">
         <label for="datenaissance">Date de naissance</label>
-        <input type="date" name="datenaissance" class="form-control" placeholder="">
+        <input type="date" name="datenaissance" class="form-control" placeholder="" [(ngModel)]="patient.p_datenaissance">
       </div>
       <!-- /datenaissance -->
       <!-- telphone -->
       <div class="form-group">
         <label for="telphone">Numéo de téléphone</label>
-        <input type="number" name="telphone" class="form-control" placeholder="">
+        <input type="number" name="telphone" class="form-control" placeholder="" [(ngModel)]="patient.p_tel1" >
       </div>
       <!-- /telphone -->
     </div>
   </div>
   <hr />
   <h4>Adresse du patient</h4>
-  <div class='row'>
+  <div class='row' ngModelGroup='address'>
     <div class='col'>
       <!-- ligneAdr1 -->
       <div class="form-group">
         <label for="ligneAdr1">Ligne adresse 1</label>
-        <input type="text" name="ligneAdr1" maxlength="32" class="form-control" placeholder="">
+        <input type="text" name="ligneAdr1" maxlength="32" class="form-control" placeholder=""  [(ngModel)]="patient.p_adresses.ligne1">
       </div>
       <!-- /ligneAdr1 -->
       <!-- ligneAdr2 -->
       <div class="form-group">
         <label for="ligneAdr2">Ligne adresse 2</label>
-        <input type="text" name="ligneAdr2" maxlength='32' class="form-control" placeholder="">
+        <input type="text" name="ligneAdr2" maxlength='32' class="form-control" placeholder="" [(ngModel)]="patient.p_adresses.ligne2">
       </div>
       <!-- /ligneAdr2 -->
     </div>
@@ -94,13 +96,13 @@
       <!-- CP -->
       <div class="form-group">
         <label for="codepostal">Code Postal</label>
-        <input type="text" name="codepostal" class="form-control" placeholder="">
+        <input type="text" name="codepostal" class="form-control" placeholder="" [(ngModel)]="patient.p_adresses.cp">
       </div>
       <!-- /CP -->
       <!-- VILLE -->
       <div class="form-group">
         <label for="ville">Ville</label>
-        <input type="text" name="ville" class="form-control" placeholder="">
+        <input type="text" name="ville" class="form-control" placeholder="" [(ngModel)]="patient.p_adresses.ville">
       </div>
       <!-- /VILLE -->
     </div>
@@ -110,14 +112,10 @@
         <!-- PROF -->
         <div class="form-group">
           <label for="profession">Votre profession</label>
-          <input type="text" name="profession" class="form-control" placeholder="">
+          <input type="text" name="profession" class="form-control" placeholder="" [(ngModel)]="patient.p_profession">
         </div>
         <!-- /PROF -->
       </div>
     </div>
-
-
-
-
   <button type="submit" class="btn btn-primary btn-block">Enregistrer les informations</button>
 </form>
