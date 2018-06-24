@@ -1,0 +1,45 @@
+/**{
+    font-family: 'calibri';
+    margin: 0;
+    padding: 0;
+    transition: 0.2s ease;
+}
+body, html {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+#sidenav{
+    width: 100%;
+    height: 56px;
+    line-height: 56px;
+    margin:0;
+    padding: 0px 10px;
+    background-color: #004d40   ;
+    color: white; 
+}
+
+.btn{
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    margin: 0 4px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px; 
+    font-weight: bold;
+    &:hover{
+        border-radius: 25px;
+        background-color: #00897b;
+    }
+}
+.red{
+    background-color: #b71c1c; 
+}
+.green{
+    background-color: #2e7d32 ; 
+}
+.grey{
+    background-color: #00695c ;
+}*/

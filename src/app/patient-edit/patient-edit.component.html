@@ -1,0 +1,123 @@
+<h2>
+  Bienvenue dans l'application MIRTHRESCUE
+</h2>
+<blockquote>
+  Cette application à pour but de gérer les patients au travers d'une interface en angular 6.
+  <br /> Développée par Fabien M. Dans le cadre d'un projet de fin d'étude FIA5 - Ecole ISIS.
+</blockquote>
+<hr />
+
+<h3>Détail du patient (#{{iPP}})
+  <button (click)='getBackToList()' class='btn btn-info' style='float:right;'>Retourner à la liste</button>
+</h3>
+
+<form>
+
+  <div class='row'>
+    <div class='col'>
+      <!-- NOM -->
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input type="text" name='nom' class="form-control" placeholder="nom du patient">
+      </div>
+      <!-- /NOM -->
+    </div>
+    <div class='col'>
+      <!-- NOM MATRI -->
+      <div class="form-group">
+        <label for="nommatry">Nom matrynomial</label>
+        <input type="text" class="form-control" name="nommatry" placeholder="nom matrynomial">
+      </div>
+      <!-- /NOM MATRI -->
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col'>
+      <!-- PRENOM 1 -->
+      <div class="form-group">
+        <label for="prenom1">Prénom n°1</label>
+        <input type="text" name="prenom1" class="form-control" placeholder="">
+      </div>
+      <!-- /PRENOM -->
+      <!-- PRENOM 2 -->
+      <div class="form-group">
+        <label for="prenom2">Prénom n°2</label>
+        <input type="text" name="prenom2" class="form-control" placeholder="">
+      </div>
+      <!-- /PRENOM -->
+      <!-- PRENOM 3 -->
+      <div class="form-group">
+        <label for="prenom3">Prénom n°3</label>
+        <input type="text" name="prenom3" class="form-control" placeholder="">
+      </div>
+      <!-- /PRENOM -->
+    </div>
+    <div class='col'>
+      <!-- numcpam -->
+      <div class="form-group">
+        <label for="numcpam">Numéro CPAM</label>
+        <input type="number" name="numcpam" class="form-control" placeholder="">
+      </div>
+      <!-- /numcpam -->
+      <!-- datenaissance -->
+      <div class="form-group">
+        <label for="datenaissance">Date de naissance</label>
+        <input type="date" name="datenaissance" class="form-control" placeholder="">
+      </div>
+      <!-- /datenaissance -->
+      <!-- telphone -->
+      <div class="form-group">
+        <label for="telphone">Numéo de téléphone</label>
+        <input type="number" name="telphone" class="form-control" placeholder="">
+      </div>
+      <!-- /telphone -->
+    </div>
+  </div>
+  <hr />
+  <h4>Adresse du patient</h4>
+  <div class='row'>
+    <div class='col'>
+      <!-- ligneAdr1 -->
+      <div class="form-group">
+        <label for="ligneAdr1">Ligne adresse 1</label>
+        <input type="text" name="ligneAdr1" maxlength="32" class="form-control" placeholder="">
+      </div>
+      <!-- /ligneAdr1 -->
+      <!-- ligneAdr2 -->
+      <div class="form-group">
+        <label for="ligneAdr2">Ligne adresse 2</label>
+        <input type="text" name="ligneAdr2" maxlength='32' class="form-control" placeholder="">
+      </div>
+      <!-- /ligneAdr2 -->
+    </div>
+    <div class='col'>
+      <!-- CP -->
+      <div class="form-group">
+        <label for="codepostal">Code Postal</label>
+        <input type="text" name="codepostal" class="form-control" placeholder="">
+      </div>
+      <!-- /CP -->
+      <!-- VILLE -->
+      <div class="form-group">
+        <label for="ville">Ville</label>
+        <input type="text" name="ville" class="form-control" placeholder="">
+      </div>
+      <!-- /VILLE -->
+    </div>
+  </div>
+  <div class='row'>
+      <div class='col'>
+        <!-- PROF -->
+        <div class="form-group">
+          <label for="profession">Votre profession</label>
+          <input type="text" name="profession" class="form-control" placeholder="">
+        </div>
+        <!-- /PROF -->
+      </div>
+    </div>
+
+
+
+
+  <button type="submit" class="btn btn-primary btn-block">Enregistrer les informations</button>
+</form>

@@ -1,0 +1,35 @@
+<h2>
+  Bienvenue dans l'application MIRTHRESCUE
+</h2>
+<blockquote>
+  Cette application à pour but de gérer les patients au travers d'une interface en angular 6.
+  <br /> Développée par Fabien M. Dans le cadre d'un projet de fin d'étude FIA5 - Ecole ISIS.
+</blockquote>
+<hr />
+
+<h3>Liste des patients</h3>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">NOM</th>
+      <th scope="col">PRENOM</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let patient of listPatient; let i = index ">
+      <th scope="row">{{patient.PIpp}}</th>
+      <td>{{patient.PNom}}</td>
+      <td>{{patient.PPrenom1}}</td>
+      <td><button class="btn btn-primary" (click)="onSelect(patient)" role="button">Voir </button></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>
+  <ngb-alert [dismissible]="false">
+    <strong>Cliquer pour voir !</strong> Les détails des patients vous permettent de modifier les informations ou de supprimer les fiches.
+  </ngb-alert>
+</p>

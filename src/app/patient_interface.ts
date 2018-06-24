@@ -1,0 +1,15 @@
+export interface IPatient {
+    PIpp: number,
+    PNom: string,
+    PPrenom1: string,
+    PPrenom2: string,
+    PPrenom3: string,
+    PProfession: string,
+    PTel1: string,
+    PAdr1: string,
+    PCp: string,
+    PDatenaissance: string,
+    PNumcpam: string,
+    PVille: string,
+    PNommatri: string,
+}

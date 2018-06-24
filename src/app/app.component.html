@@ -1,0 +1,93 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!--
+<nav id='sidenav'>
+  <a routerLink="/patientList" class="btn grey">Liste patients</a>
+  <a routerLink="/patientCreate" class="btn grey">Créer patient</a>
+  <a routerLink="/admissionCreate" class="btn grey">Créer admission</a>
+  <a routerLink="/admissionManage" class="btn grey">Gérer un séjour</a>
+</nav>-->
+
+
+
+<nav class="navbar navbar-expand md-12 navbar-dark bg-dark">
+
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li routerLinkActive="active" class="nav-item">
+                <a routerLink="patientList" class="nav-link ">Liste patients
+                </a>
+            </li>
+            <li routerLinkActive="active" class="nav-item">
+                <a routerLink="patientCreate" class="nav-link">Créer patient</a>
+            </li>
+            <li routerLinkActive="active" class="nav-item">
+                <a routerLink="admissionCreate" class="nav-link">Créer séjour</a>
+            </li>
+            <li routerLinkActive="active" class="nav-item">
+                <a routerLink="admissionManage" class="nav-link">gérer Séjour</a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+           Créé par Fabien MOULET.
+        </span>
+    </div>
+</nav>
+
+<!-- Main -->
+<main>
+    <div class="container" style="min-height: 685px;padding-top: 50px">
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer class="page-footer green pt-4 mt-4 bg-dark" style='color: white;'>
+
+        <!--Footer Links-->
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+
+                <!--First column-->
+                <div class="col-md-6">
+                    <h5 class="title">Patient Admin</h5>
+                    <p>Cette application a été créée par Fabien MOULET.
+                        <br /> Apprenti ingénieur ISIS - FIA 5
+                        <br /> © Copyright 2018</p>
+                </div>
+                <!--/.First column-->
+
+                <!--Second column-->
+                <div class="col-md-6">
+                    <h5 class="title">Liens utiles</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#">GitHub</a>
+                        </li>
+                        <li>
+                            <a href="mailto:mouletfabien@gmail.com">Envoyer un e-mail</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.Second column-->
+            </div>
+        </div>
+        <!--/.Footer Links-->
+
+        <!--Copyright-->
+        <div class="footer-copyright text-center py-3">
+            <div class="container-fluid">
+                © 2017 Copyright:
+                <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+            </div>
+        </div>
+        <!--/.Copyright-->
+    </footer>
+    <!--/.Footer-->
+
+</main>
+
+
+
+
+<!-- /.Main -->
