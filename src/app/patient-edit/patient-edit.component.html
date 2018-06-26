@@ -8,12 +8,15 @@
 <hr />
 
 <h3>Détail du patient (#{{iPP}})
+  <button (click)='deletePatient()' class='btn btn-danger'>supprimer</button>
   <button (click)='getBackToList()' class='btn btn-info' style='float:right;'>Retourner à la liste</button>
 </h3>
 
 <form #patientForm="ngForm">
 
-  {{patient | json}}
+  <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
+
+  <span style='color: green'>{{ message }}</span>
   
   <div class='row'>
     <div class='col'>
@@ -34,7 +37,7 @@
     </div>
   </div>
   <div class='row'>
-    <div class='col'>
+    <div class='col' ngModelGroup="prenoms">
       <!-- PRENOM 1 -->
       <div class="form-group">
         <label for="prenom1">Prénom n°1</label>
@@ -69,8 +72,8 @@
       <!-- /datenaissance -->
       <!-- telphone -->
       <div class="form-group">
-        <label for="telphone">Numéo de téléphone</label>
-        <input type="number" name="telphone" class="form-control" placeholder="" [(ngModel)]="patient.p_tel1" >
+        <label for="telephone">Numéo de téléphone</label>
+        <input type="number" name="telephone" class="form-control" placeholder="" [(ngModel)]="patient.p_tel1" >
       </div>
       <!-- /telphone -->
     </div>
@@ -117,5 +120,5 @@
         <!-- /PROF -->
       </div>
     </div>
-  <button type="submit" class="btn btn-primary btn-block">Enregistrer les informations</button>
+  <button type="submit" class="btn btn-primary btn-block" (click)="saveInformations(patientForm.value)">Enregistrer les informations</button>
 </form>

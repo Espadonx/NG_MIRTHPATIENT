@@ -16,7 +16,7 @@ export class Patient {
             cp: cp != undefined ? cp : '',
             ville: ville != undefined ? ville : ''
         }
-        this.p_datenaissance = datenaissance;
+        this.p_datenaissance = datenaissance != undefined ? datenaissance : '';
         this.p_ipp = ipp;
         this.p_nom = nom != undefined ? nom : '';
         this.p_nommatri = nommatri != undefined ? nommatri : '';
@@ -57,6 +57,37 @@ export class Patient {
         };
         this.p_profession = obj.PProfession != undefined ? obj.PProfession : '';
         this.p_tel1 = parseInt(obj.PTel1);
+    }
+
+    /**
+     * Cette fonction permet d'encapsuler toutes les données dans les bons champs
+     * spécifiques et attendus par le WebService JAVA.
+     * En effet, il attend des clés spécifiques au format JSON générés automatiquement.
+     */
+    formatToIntegrationInWebServices(){
+        let objectToReturn : Object;
+
+        //Format date naissance au format ISO
+        var dteNaiss = new Date(this.p_datenaissance).toISOString();
+
+        objectToReturn = {
+            "PAdr1": this.p_adresses.ligne1,
+            "PAdr2": this.p_adresses.ligne2,
+            "PCp": this.p_adresses.cp,
+            "PDatenaissance": dteNaiss,
+            "PIpp": this.p_ipp,
+            "PNom": this.p_nom,
+            "PNommatri": this.p_nommatri,
+            "PNumcpam": this.p_numcpam,
+            "PPrenom1": this.p_prenoms.prenom1,
+            "PPrenom2": this.p_prenoms.prenom2,
+            "PPrenom3": this.p_prenoms.prenom3,
+            "PProfession": this.p_profession,
+            "PTel1": this.p_tel1,
+            "PVille": this.p_adresses.ville
+        }
+
+        return objectToReturn;
     }
 
 

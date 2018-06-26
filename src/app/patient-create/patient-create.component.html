@@ -1,3 +1,166 @@
-<p>
-  patient-create works!
-</p>
+<h2>
+  Bienvenue dans l'application MIRTHRESCUE
+</h2>
+<blockquote>
+  Cette application à pour but de gérer les patients au travers d'une interface en angular 6.
+  <br /> Développée par Fabien M. Dans le cadre d'un projet de fin d'étude FIA5 - Ecole ISIS.
+</blockquote>
+<hr />
+
+<h3>Informations du patient
+  <button (click)='getBackToList()' class='btn btn-info' style='float:right;'>Retourner à la liste</button>
+</h3>
+
+<ngb-alert *ngIf="successCreation" type="success" (close)="success = null">
+  Votre patient a bien été créé !
+</ngb-alert>
+
+<ngb-alert *ngIf="errors" type="danger" (close)="errors = null">
+  <span *ngFor="let er of errorsList">
+    {{er}}<br />
+  </span>
+</ngb-alert>
+
+<form #patientForm="ngForm" class='needs-validation'>
+
+  <div [class.d-none]="!doublons" style="margin-bottom:30px">
+
+    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+      <ngb-panel title="Gestion des doublons">
+        <ng-template ngbPanelContent>
+
+          <ngb-alert [dismissible]="false">
+            <strong>Attention !</strong> Un ou des doublons de fiche ont été trouvée(s) avec ce nom.
+          </ngb-alert>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom & prénom</th>
+                <th scope="col">action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let patient_doublon of doublonsList">
+                <th scope="row">{{patient_doublon.p_ipp}}</th>
+                <td>{{patient_doublon.p_nom | uppercase}} {{patient_doublon.p_prenom}}</td>
+                <td>
+                  <button class='btn btn-info' (click)="seeFiche(patient_doublon)">voir la fiche</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button type="submit" class="btn btn-primary btn-block" (click)="confirmPatientCreation()">Confirmer la création du patient</button>
+
+
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+
+  </div>
+
+
+  <div class='row'>
+    <div class='col'>
+      <!-- NOM -->
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input type="text" required name='nom' class="form-control"  [class.is-invalid]="patient.p_nom == ''" placeholder="nom du patient" [(ngModel)]="patient.p_nom">
+      </div>
+      <!-- /NOM -->
+    </div>
+    <div class='col'>
+      <!-- NOM MATRI -->
+      <div class="form-group">
+        <label for="nommatry">Nom matrynomial</label>
+        <input type="text" required class="form-control" name="nommatry" placeholder="nom matrynomial" [(ngModel)]="patient.p_nommatri">
+      </div>
+      <!-- /NOM MATRI -->
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col' ngModelGroup="prenoms">
+      <!-- PRENOM 1 -->
+      <div class="form-group">
+        <label for="prenom1">Prénom n°1</label>
+        <input type="text" name="prenom1" class="form-control" [class.is-invalid]="patient.p_prenoms.prenom1 == ''" placeholder="" [(ngModel)]="patient.p_prenoms.prenom1">
+      </div>
+      <!-- /PRENOM -->
+      <!-- PRENOM 2 -->
+      <div class="form-group">
+        <label for="prenom2">Prénom n°2</label>
+        <input type="text" name="prenom2" class="form-control" placeholder="" [(ngModel)]="patient.p_prenoms.prenom2">
+      </div>
+      <!-- /PRENOM -->
+      <!-- PRENOM 3 -->
+      <div class="form-group">
+        <label for="prenom3">Prénom n°3</label>
+        <input type="text" name="prenom3" class="form-control" placeholder="" [(ngModel)]="patient.p_prenoms.prenom3">
+      </div>
+      <!-- /PRENOM -->
+    </div>
+    <div class='col'>
+      <!-- numcpam -->
+      <div class="form-group">
+        <label for="numcpam">Numéro CPAM</label>
+        <input type="number" name="numcpam" class="form-control" [class.is-invalid]="patient.p_numcpam == ''" placeholder="" [(ngModel)]="patient.p_numcpam">
+      </div>
+      <!-- /numcpam -->
+      <!-- datenaissance -->
+      <div class="form-group">
+        <label for="datenaissance">Date de naissance</label>
+        <input type="date" name="datenaissance" class="form-control" [class.is-invalid]="patient.p_datenaissance == ''" placeholder="" [(ngModel)]="patient.p_datenaissance">
+      </div>
+      <!-- /datenaissance -->
+      <!-- telphone -->
+      <div class="form-group">
+        <label for="telephone">Numéo de téléphone</label>
+        <input type="number" name="telephone" class="form-control" [class.is-invalid]="patient.p_tel1 == 0" placeholder="" [(ngModel)]="patient.p_tel1">
+      </div>
+      <!-- /telphone -->
+    </div>
+  </div>
+  <hr />
+  <h4>Adresse du patient</h4>
+  <div class='row' ngModelGroup='address'>
+    <div class='col'>
+      <!-- ligneAdr1 -->
+      <div class="form-group">
+        <label for="ligneAdr1">Ligne adresse 1</label>
+        <input type="text" name="ligneAdr1" maxlength="32" class="form-control" [class.is-invalid]="patient.p_adresses.ligne1 == ''" placeholder="" [(ngModel)]="patient.p_adresses.ligne1">
+      </div>
+      <!-- /ligneAdr1 -->
+      <!-- ligneAdr2 -->
+      <div class="form-group">
+        <label for="ligneAdr2">Ligne adresse 2</label>
+        <input type="text" name="ligneAdr2" maxlength='32' class="form-control" placeholder="" [(ngModel)]="patient.p_adresses.ligne2">
+      </div>
+      <!-- /ligneAdr2 -->
+    </div>
+    <div class='col'>
+      <!-- CP -->
+      <div class="form-group">
+        <label for="codepostal">Code Postal</label>
+        <input type="text" name="codepostal" class="form-control" placeholder="" [class.is-invalid]="patient.p_adresses.cp == ''" [(ngModel)]="patient.p_adresses.cp">
+      </div>
+      <!-- /CP -->
+      <!-- VILLE -->
+      <div class="form-group">
+        <label for="ville">Ville</label>
+        <input type="text" name="ville" class="form-control" placeholder="" [class.is-invalid]="patient.p_adresses.ville == ''" [(ngModel)]="patient.p_adresses.ville">
+      </div>
+      <!-- /VILLE -->
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col'>
+      <!-- PROF -->
+      <div class="form-group">
+        <label for="profession">Votre profession</label>
+        <input type="text" name="profession" class="form-control" [class.is-invalid]="patient.p_profession == ''" placeholder="" [(ngModel)]="patient.p_profession">
+      </div>
+      <!-- /PROF -->
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary btn-block" (click)="createPatient(patientForm.value)">Créer le patient</button>
+</form>
