@@ -1,0 +1,49 @@
+<h2>
+  Epic Search Patient
+</h2>
+<blockquote>
+  Contemplez la puissance de la recherche de patient avec Angular et le dynamisme d'une recherche !
+</blockquote>
+<hr /> {{str}}
+<form #patientSearch="ngForm">
+  <div class="form-row">
+    <div class="col-md-4 form-group">
+      <label for="">Nom du patient</label>
+      <input type="text" class="form-control" placeholder="" (keyup)='searchPatient()' name="nom" [(ngModel)]="searchData.nom">
+    </div>
+    <div class="col-md-4 form-group">
+      <label for="">Prénom du patient</label>
+      <input type="text" class="form-control" placeholder="" (keyup)='searchPatient()' name="prenom" [(ngModel)]="searchData.prenom">
+    </div>
+    <div class="col-md-4 form-group">
+      <label for="">date de Naissance</label>
+      <input type="date" class="form-control" placeholder="" (change)='searchPatient()' name="dateNaissance" [(ngModel)]="searchData.dateNaissance">
+    </div>
+  </div>
+
+</form>
+
+<h5>Résultat de la recherche</h5>
+<div [class.d-none]="!msgDisplayed.displayed" class="alert alert-warning " role="alert">
+  {{msgDisplayed.msg}}
+</div>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">NOM</th>
+      <th scope="col">PRENOM</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let patient of listPatientDisplayed; let i = index ">
+      <th scope="row">{{patient.p_ipp}}</th>
+      <td>{{patient.p_nom}}</td>
+      <td>{{patient.p_prenoms.prenom1}}</td>
+      <td>
+        <button class="btn btn-primary" (click)="onSelect(patient)" role="button">Voir </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

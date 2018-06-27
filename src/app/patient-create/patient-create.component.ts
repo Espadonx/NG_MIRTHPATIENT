@@ -85,6 +85,10 @@ export class PatientCreateComponent implements OnInit {
     this.router.navigate(['patientList']);
   }
 
+  public navigateToEpicSearch(){
+    
+  }
+
   /**
    * Fonction qui vérifie que toutes les informations sont remplies !
    */

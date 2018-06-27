@@ -29,4 +29,8 @@ export class PatientListComponent implements OnInit {
         // 1. L'URL, paramètre
   }
 
+  public navigateToEpicSearch(){
+    this.router.navigate(['epicSearchpatient']);
+  }
+
 }

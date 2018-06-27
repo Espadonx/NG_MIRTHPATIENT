@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PatientEditComponent } from './patient-edit/patient-edit.component';
+import { PatientEpicsearchComponent } from './patient-epicsearch/patient-epicsearch.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     PatientEditComponent,
+    PatientEpicsearchComponent,
   ],
   imports: [
     BrowserModule,
