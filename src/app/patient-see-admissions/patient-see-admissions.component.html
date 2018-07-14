@@ -1,0 +1,38 @@
+<h2>
+  Bienvenue dans l'application MIRTHRESCUE
+</h2>
+<blockquote>
+  Cette application à pour but de gérer les patients au travers d'une interface en angular 6.
+  <br /> Développée par Fabien M. Dans le cadre d'un projet de fin d'étude FIA5 - Ecole ISIS.
+</blockquote>
+<hr />
+
+<h3>Admission(s) de {{patient.p_nom}} {{patient.p_prenoms.prenom1}} &nbsp;
+  <button (click)='goToFiche()' class='btn btn-primary'>Revenir à la fiche patient</button>
+  <button (click)='getBackToList()' class='btn btn-info' style='float:right;'>Retourner à la liste</button>
+</h3>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date d'ouverture</th>
+      <th scope="col">Date Cloture</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let admission of admissionsList; let i = index ">
+      <th scope="row">{{admission.iep}}</th>
+      <td>
+        {{admission.dte_admission}}
+      </td>
+      <td>
+          {{admission.dte_cloture}}
+      </td>
+      <td>
+        <button class="btn btn-primary" (click)="manageAdmission(admission)" role="button">Voir </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

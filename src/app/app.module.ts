@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PatientEditComponent } from './patient-edit/patient-edit.component';
 import { PatientEpicsearchComponent } from './patient-epicsearch/patient-epicsearch.component';
+import { PatientSeeAdmissionsComponent } from './patient-see-admissions/patient-see-admissions.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { PatientEpicsearchComponent } from './patient-epicsearch/patient-epicsea
     routingComponents,
     PatientEditComponent,
     PatientEpicsearchComponent,
+    PatientSeeAdmissionsComponent,
   ],
   imports: [
     BrowserModule,

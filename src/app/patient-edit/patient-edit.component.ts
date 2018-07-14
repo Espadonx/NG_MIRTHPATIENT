@@ -35,6 +35,10 @@ export class PatientEditComponent implements OnInit {
     this.router.navigate(['patientList']);
   }
 
+  public goToAdmissions(){
+    this.router.navigate(["patient-admissions", this.patient.p_ipp]);
+  }
+
   public deletePatient(){
     if(confirm("Souhaitez-vous réellement supprimer cette fiche ?")){
       //On supprime l'entrée de la base et on redirige en informant l'utilisateur

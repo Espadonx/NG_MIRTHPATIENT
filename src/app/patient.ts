@@ -1,3 +1,5 @@
+import { Admission } from "./admission";
+
 export class Patient {
     public p_ipp: number;
     public p_nom: string;
@@ -8,6 +10,7 @@ export class Patient {
     public p_adresses;
     public p_tel1: number;
     public p_profession: string;
+    public p_admissions: Admission[];
 
     constructor(ipp?, nom?, nommatri?, prenom1?, prenom2?, prenom3?, numcpam?, datenaissance?, adr1?, adr2?, cp?, ville?, tel?, profession?) {
         this.p_adresses = {

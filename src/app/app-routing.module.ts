@@ -6,14 +6,16 @@ import { AdmissionCreateComponent } from './admission-create/admission-create.co
 import { AdmissionManageComponent } from './admission-manage/admission-manage.component';
 import { PatientEditComponent } from './patient-edit/patient-edit.component';
 import { PatientEpicsearchComponent } from './patient-epicsearch/patient-epicsearch.component';
+import { PatientSeeAdmissionsComponent } from './patient-see-admissions/patient-see-admissions.component';
 
 const routes: Routes = [
   {path: "patientList", component: PatientListComponent},
   {path: "patientCreate", component: PatientCreateComponent},
   {path: "patient/:id", component: PatientEditComponent}, //On passe un ID en paramètre
   {path: "admissionCreate", component: AdmissionCreateComponent},
-  {path: "admissionManage", component: AdmissionManageComponent},
+  {path: "admission/:id", component: AdmissionManageComponent},
   {path: "epicSearchpatient", component: PatientEpicsearchComponent},
+  {path: "patient-admissions/:id", component: PatientSeeAdmissionsComponent},
   {path: "**", component:PatientListComponent}
 ];
 
@@ -28,5 +30,6 @@ export const routingComponents = [
   AdmissionCreateComponent,
   AdmissionManageComponent,
   PatientEditComponent,
-  PatientEpicsearchComponent
+  PatientEpicsearchComponent,
+  PatientSeeAdmissionsComponent
 ]

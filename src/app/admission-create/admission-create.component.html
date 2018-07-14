@@ -1,3 +1,71 @@
-<p>
-  admission-create works!
-</p>
+<h2>
+  Création d'admission
+</h2>
+<blockquote>
+  Sélectionnez le patient puis créez l'admission en bonne et dûe forme.
+</blockquote>
+<hr />
+
+<form #patientFormAdmission="ngForm">
+  <div class="form-row">
+    <div class="col-md-4 form-group">
+
+      <label>Sélecteur de Patient</label>
+      <select class="form-control" (change)="selectPatient()" placeholder="Sélectionnez un patient" name="patient_ipp" [(ngModel)]="currentPatientIpp">
+        <!--Listing des patients ici et en fonction de ça on remplira les champs correspondants-->
+        <option *ngFor="let p of listPatient" value='{{p.p_ipp}}'>{{p.p_nom}} {{p.p_prenoms.prenom1}}</option>
+      </select>
+    </div>
+  </div>
+</form>
+
+<hr />
+
+<ngb-alert *ngIf="successCreation" type="success" (close)="success = null">
+  L'admission a bien été créée !
+</ngb-alert>
+<ngb-alert *ngIf="errors" type="danger" (close)="errors = null">
+    <span *ngFor="let er of errorsList">
+      {{er}}<br />
+    </span>
+  </ngb-alert>
+
+<div [class.d-none]="currentPatientIpp == null" class="card" style="width: 36rem;">
+  <div class="card-body">
+    <h5 class="card-title">Détail de l'admission</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{currentPatient.p_nom}} {{currentPatient.p_prenoms.prenom1}} {{currentPatient.p_prenoms.prenom2}} {{currentPatient.p_prenoms.prenom3}}</h6>
+    <p class="card-text">Né(e) le : {{currentPatient.p_datenaissance}}</p>
+
+    <!-- Création du formulaire de l'admission -->
+
+    <form #admissionForm="ngForm">
+      <input type="hidden" name="ipp" [(ngModel)]="currentAdmission.ipp">
+      <div class="form-group">
+        <label>Choisissez l'UF d'entrée</label>
+        <select class="form-control" name="uf" [(ngModel)]="currentAdmission.uf">
+          <option value='1'>Laboratoire</option>
+          <option value='2'>Pharmacie</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Choisissez la date d'admission</label>
+        <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="currentAdmission.dte" ngbDatepicker
+            #d="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+              <img src="https://ng-bootstrap.github.io/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-success btn-block" (click)="saveAdmission()" name="completeAdmission">Enregistrer l'admission</button>
+      </div>
+
+    </form>
+    {{ currentAdmission | json }}
+  </div>
+</div>

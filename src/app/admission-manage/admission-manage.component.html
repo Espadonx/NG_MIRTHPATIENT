@@ -1,3 +1,67 @@
-<p>
-  admission-manage works!
-</p>
+<h2>
+  Bienvenue dans l'application MIRTHRESCUE
+</h2>
+<blockquote>
+  Cette application à pour but de gérer les patients au travers d'une interface en angular 6.
+  <br /> Développée par Fabien M. Dans le cadre d'un projet de fin d'étude FIA5 - Ecole ISIS.
+</blockquote>
+<hr />
+
+<h3>Admission de {{patient.p_nom}} {{patient.p_prenoms.prenom1}} - #{{admission.iep}} 
+
+    <button (click)='deleteAdmission()' class='btn btn-danger'>Supprimer</button>
+    <button (click)='getBackToList()' class='btn btn-info' style='float:right;'>Retourner à la liste des admissions</button>
+</h3>
+
+<ngb-alert *ngIf="successUpdating" type="success" (close)="successUpdating = null">L'admission a été mise à jour.</ngb-alert>
+
+<form #patientForm="ngForm">
+  <div class='row'>
+    <div class='col'>
+      <!-- NOM -->
+      <div class="form-group">
+          <label>Date d'admission</label>
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" value="{{admission.dte_admission}}" [(ngModel)]="admission.dte" ngbDatepicker
+              #d="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                <img src="https://ng-bootstrap.github.io/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+              </button>
+            </div>
+          </div>
+      </div>
+      <!-- /NOM -->
+    </div>
+    <div class='col'>
+      <!-- NOM MATRI -->
+      <div class="form-group">
+          <label>Date de clôture d'admission</label>
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd" name="dc" value="{{admission.dte_cloture}}" [(ngModel)]="admission.dte2" ngbDatepicker
+              #d2="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="d2.toggle()" type="button">
+                <img src="https://ng-bootstrap.github.io/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+              </button>
+            </div>
+          </div>
+      </div>
+      <!-- /NOM MATRI -->
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col'>
+        <div class="form-group">
+            <label for="nommatry">UF de départ</label>
+            <select class="form-control" name="uf" [(ngModel)]="admission.uf">
+              <option [selected]="admission.uf == 1" value="1">Laboratoire</option>
+              <option [selected]="admission.uf == 2" value="2">Pharmacie</option>
+              </select>
+          </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block" (click)="saveInformations(patientForm.value)">Enregistrer les informations</button>
+</form>
